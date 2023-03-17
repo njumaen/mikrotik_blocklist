@@ -259,6 +259,11 @@ Long story short, they all work as expected, but the benefits seem to come only 
 
 :set newips
 
+# disable for private ip address ranges
+/ip firewall address-list set [find list="prod_blocklist" address="10.0.0.0/8"] disabled=yes
+/ip firewall address-list set [find list="prod_blocklist" address="172.16.0.0/12"] disabled=yes
+/ip firewall address-list set [find list="prod_blocklist" address="192.168.0.0/16"] disabled=yes
+
 /system logging enable 0
 :log info "blocklist-REP finished - enabled info"
 :log info "blocklist-REP finished:  $countremoved removed, $countnew new, $counterror errors / $counttotal  total"
